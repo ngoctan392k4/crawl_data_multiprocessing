@@ -118,7 +118,7 @@ def process_pid(item):
 def collect_products_data(file_path):
     start_batch = load_checkpoint(f"checkpoint/checkpoint_crawl_product_data.txt")
 
-    for batch, batch_num in batch_reader(start_batch, batch_size=1, input_file=file_path):
+    for batch, batch_num in batch_reader(start_batch, batch_size=config["BATCH_SIZE"], input_file=file_path):
         with Pool(processes=config["PROCESSES"]) as pool:
             parameters = [item for item in batch]
             results = list(tqdm(pool.imap_unordered(process_pid, parameters), total=len(batch), desc=f"Batch {batch_num}"))
