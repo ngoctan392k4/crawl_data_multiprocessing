@@ -7,7 +7,7 @@ if __name__ == "__main__":
     logging.info(f"Starting crawling product data to enrich data")
 
     try:
-        collect_products_data("data/data/add_to_cart_action.json")
+        collect_products_data("data/add_to_cart_action.json")
     except Exception as e:
         logging.exception("Error when collecting product data:", e)
 
